@@ -1,0 +1,59 @@
+Create a full-stack quiz application using ReactJS with Tailwind CSS for styling, Framer Motion for smooth animations, and React Icons. Use Appwrite as the backend for database, storage, and user data. Ensure dark and light mode support and responsive design.
+
+🧩 Core Features:
+
+1. **Quiz Listing Page (Homepage)**:
+   - Display all available quizzes in a card/grid layout.
+   - Show quiz title, description, banner image, category tag, and creation date.
+   - Use **Framer Motion** for card animations and **skeleton loaders** while data loads.
+   - Add **search bar** and **filter by tags/categories** to help users find quizzes.
+   - Smooth animated transitions between loading states and components.
+
+2. **Admin Panel**:
+   - Admin can **create, edit, delete** quizzes.
+   - Each quiz includes: title, description, date, category tag(s), banner image.
+   - Allow admin to upload multiple **MCQ-type questions**, each with:
+     - 4 options (only one correct)
+     - Optional image
+     - Optional **explanation** for correct answer
+   - Add settings like:
+     - Enable/disable **timer per quiz** (admin-defined duration)
+     - Enable/disable **question navigation** (next/prev or dots)
+     - Enable/disable randomization of questions or options
+   - Allow **cloning an existing quiz**.
+   - Admin can **clear entire leaderboard** or remove specific user entries.
+
+3. **User Quiz Flow (No login)**:
+   - Ask user for **name** and **unique USN** before starting quiz.
+   - Store only name, USN, score, and timestamp in Appwrite (no auth).
+   - Show one question at a time with navigation (next/prev buttons or step dots).
+   - Display a **timer countdown** if enabled (auto-submit on timeout).
+   - On submission:
+     - Show score
+     - Highlight correct/wrong answers with optional explanation
+     - Trigger a **confetti animation** (if score > 80% or configurable threshold)
+
+4. **Leaderboard**:
+   - Maintain a **quiz-specific leaderboard** sorted by highest scores.
+   - Display name, USN, score, and time taken.
+   - Admin controls to export leaderboard and clear data.
+
+5. **Visuals & UI Enhancements**:
+   - Smooth page transitions and hover effects using Framer Motion.
+   - Theme toggle button (🌙/☀️), with **dark/light mode preference saved in localStorage**.
+   - Use React Icons for UI elements like buttons, leaderboard, timer, etc.
+   - Include **responsive layout** and mobile-friendly design.
+
+6. **Backend with Appwrite**:
+   - Store data in Appwrite collections:
+     - `Quizzes`: id, title, description, tags, banner, date, timerEnabled, duration, allowNav
+     - `Questions`: quiz_id, question, options[4], correct_index, image (optional), explanation (optional)
+     - `Results`: quiz_id, name, USN, score, timeTaken, timestamp
+   - Use Appwrite’s File storage for images (quiz banners & question images).
+   - Use Appwrite functions or access control to protect admin-only operations.
+
+🧪 Optional:
+- Add `react-confetti` for celebration animation.
+- Use `react-loading-skeleton` or custom tailwind-based skeletons.
+- Consider `Chart.js` or `Recharts` for simple admin analytics (optional).
+
